@@ -6,12 +6,14 @@ import (
 	"crypto/rand"
 	"encoding/base64"
 	"encoding/json"
-	"github.com/ahKevinXy/go-cmb/cmb_errors"
+	"fmt"
 	"io/ioutil"
 	"math/big"
 	"net/http"
 	"net/url"
 	"strings"
+
+	"github.com/ahKevinXy/go-cmb/cmb_errors"
 
 	"github.com/ahKevinXy/go-cmb/config"
 	"github.com/ahKevinXy/go-cmb/models"
@@ -40,6 +42,8 @@ func CmbSignRequest(
 
 		return "", cmb_errors.JsonUnmarshalError
 	}
+
+	fmt.Println("CmbSignRequest==========", funCode, reqStr)
 
 	reqStr = strings.ReplaceAll(reqStr, "\n", "")
 	reqStr = strings.ReplaceAll(reqStr, "\r", "")
